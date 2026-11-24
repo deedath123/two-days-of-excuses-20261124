@@ -12,6 +12,10 @@ import os
 
 ENTRY = "I finished the report two days early, boss, then spent three days making it perfect. It is perfect. It is also a day late."
 
+# Gate self-check: the entry must be 1-200 chars on a single line.
+if not 1 <= len(ENTRY) <= 200 or "\n" in ENTRY:
+    raise ValueError("entry line violates the 1-200 char one-line gate")
+
 def main():
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
